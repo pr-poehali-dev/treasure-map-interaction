@@ -255,35 +255,15 @@ export default function Index() {
             style={{
               left: `${steps[0].x}%`,
               top: `${steps[0].y}%`,
-              transform: "translate(-175%, -62%)",
+              transform: "translate(-160%, -55%)",
               zIndex: 5,
-              animation: "shipRock 5s ease-in-out infinite",
-              width: "130px",
+              fontSize: "86px",
+              lineHeight: 1,
+              filter: "drop-shadow(3px 4px 6px rgba(44,24,16,0.5))",
+              animation: "shipRock 4s ease-in-out infinite",
             }}
           >
-            {/* Тень под кораблём */}
-            <div style={{
-              position: "absolute",
-              bottom: "-6px",
-              left: "10%",
-              width: "80%",
-              height: "14px",
-              background: "radial-gradient(ellipse, rgba(44,24,16,0.35) 0%, transparent 70%)",
-              borderRadius: "50%",
-              filter: "blur(3px)",
-            }} />
-            <img
-              src="https://cdn.poehali.dev/projects/9862dfab-9da8-4c0a-b140-aa0e186a3d1b/files/3463900c-5195-4d23-9f46-cfba40026029.jpg"
-              alt="Пиратский корабль"
-              style={{
-                width: "130px",
-                height: "auto",
-                display: "block",
-                filter: "drop-shadow(0px 6px 12px rgba(44,24,16,0.6)) drop-shadow(0px 2px 4px rgba(44,24,16,0.4))",
-                borderRadius: "8px",
-                mixBlendMode: "multiply",
-              }}
-            />
+            ⛵
           </div>
 
           {/* Сундук с сокровищами у хода 20 */}
@@ -292,46 +272,15 @@ export default function Index() {
             style={{
               left: `${steps[19].x}%`,
               top: `${steps[19].y}%`,
-              transform: "translate(55%, -68%)",
+              transform: "translate(60%, -60%)",
               zIndex: 5,
-              animation: "chestGlow 3s ease-in-out infinite",
-              width: "110px",
+              fontSize: "82px",
+              lineHeight: 1,
+              filter: "drop-shadow(3px 4px 8px rgba(44,24,16,0.55))",
+              animation: "chestGlow 2.5s ease-in-out infinite",
             }}
           >
-            {/* Золотое свечение под сундуком */}
-            <div style={{
-              position: "absolute",
-              bottom: "-8px",
-              left: "5%",
-              width: "90%",
-              height: "20px",
-              background: "radial-gradient(ellipse, rgba(212,160,23,0.5) 0%, transparent 70%)",
-              borderRadius: "50%",
-              filter: "blur(4px)",
-            }} />
-            {/* Тень */}
-            <div style={{
-              position: "absolute",
-              bottom: "-4px",
-              left: "10%",
-              width: "80%",
-              height: "12px",
-              background: "radial-gradient(ellipse, rgba(44,24,16,0.4) 0%, transparent 70%)",
-              borderRadius: "50%",
-              filter: "blur(3px)",
-            }} />
-            <img
-              src="https://cdn.poehali.dev/projects/9862dfab-9da8-4c0a-b140-aa0e186a3d1b/files/78f7c77c-8ea2-4ea9-a547-a4e33df4494a.jpg"
-              alt="Сундук с сокровищами"
-              style={{
-                width: "110px",
-                height: "auto",
-                display: "block",
-                filter: "drop-shadow(0px 4px 10px rgba(44,24,16,0.55)) drop-shadow(0px 0px 16px rgba(212,160,23,0.5))",
-                borderRadius: "8px",
-                mixBlendMode: "multiply",
-              }}
-            />
+            🧳
           </div>
 
           {/* Золотые кружки */}
