@@ -32,7 +32,26 @@ const steps: Step[] = [
   { id: 20, title: "Сокровищница!",       description: "ТЫ НАШЁЛ ЕГО! Огромный зал заполнен золотыми монетами, драгоценными камнями и артефактами тысяч цивилизаций. В центре — сундук с главным сокровищем: картой к ещё большему приключению... 🏴‍☠️", emoji: "💰", x: 78, y: 82 },
 ];
 
-const pathPoints = steps.map(s => `${s.x},${s.y}`).join(" ");
+// Генерируем плавный SVG path через кубические bezier-кривые
+function buildCurvePath(pts: { x: number; y: number }[]): string {
+  if (pts.length < 2) return "";
+  let d = `M ${pts[0].x} ${pts[0].y}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(0, i - 1)];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[Math.min(pts.length - 1, i + 2)];
+    const tension = 0.4;
+    const cp1x = p1.x + (p2.x - p0.x) * tension;
+    const cp1y = p1.y + (p2.y - p0.y) * tension;
+    const cp2x = p2.x - (p3.x - p1.x) * tension;
+    const cp2y = p2.y - (p3.y - p1.y) * tension;
+    d += ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)}, ${cp2x.toFixed(2)} ${cp2y.toFixed(2)}, ${p2.x} ${p2.y}`;
+  }
+  return d;
+}
+
+const curvePath = buildCurvePath(steps.map(s => ({ x: s.x, y: s.y })));
 
 export default function Index() {
   const [activeStep, setActiveStep] = useState<Step | null>(null);
@@ -87,39 +106,85 @@ export default function Index() {
 
         {/* Карта с кругами */}
         <div className="relative w-full" style={{ height: "calc(100vh - 180px)", minHeight: "520px" }}>
-          {/* SVG путь */}
+          {/* SVG путь — красивая верёвочная дорога */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <filter id="roughen">
-                <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.5" />
+                <feTurbulence type="turbulence" baseFrequency="0.018" numOctaves="4" seed="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.6" xChannelSelector="R" yChannelSelector="G" />
+              </filter>
+              <filter id="roughen2">
+                <feTurbulence type="turbulence" baseFrequency="0.022" numOctaves="4" seed="7" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.4" xChannelSelector="R" yChannelSelector="G" />
               </filter>
             </defs>
-            {/* Тень пути */}
-            <polyline
-              points={pathPoints}
+
+            {/* Слой 1 — широкая тёмная тень дороги */}
+            <path
+              d={curvePath}
               fill="none"
-              stroke="rgba(44,24,16,0.2)"
-              strokeWidth="0.8"
-              strokeDasharray="2,1.5"
+              stroke="rgba(44,24,16,0.28)"
+              strokeWidth="3.2"
               strokeLinecap="round"
+              strokeLinejoin="round"
               filter="url(#roughen)"
-              transform="translate(0.15,0.15)"
+              transform="translate(0.3,0.5)"
             />
-            {/* Основной пунктирный путь */}
-            <polyline
-              points={pathPoints}
+
+            {/* Слой 2 — основная дорога (светлый грунт) */}
+            <path
+              d={curvePath}
               fill="none"
-              stroke="#8B4513"
-              strokeWidth="0.5"
-              strokeDasharray="2,1.5"
+              stroke="#c8a055"
+              strokeWidth="2.6"
               strokeLinecap="round"
+              strokeLinejoin="round"
               filter="url(#roughen)"
+            />
+
+            {/* Слой 3 — тёмный контур дороги сверху */}
+            <path
+              d={curvePath}
+              fill="none"
+              stroke="#7a4a10"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="0.1,99999"
+              filter="url(#roughen2)"
+              opacity="0.5"
+            />
+
+            {/* Слой 4 — пунктир по центру дороги (как разметка) */}
+            <path
+              d={curvePath}
+              fill="none"
+              stroke="#5a2e00"
+              strokeWidth="0.55"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="1.8,2.2"
+              filter="url(#roughen2)"
+            />
+
+            {/* Слой 5 — светлый блик по верхнему краю дороги */}
+            <path
+              d={curvePath}
+              fill="none"
+              stroke="rgba(255,230,140,0.45)"
+              strokeWidth="0.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              filter="url(#roughen)"
+              transform="translate(-0.1,-0.2)"
             />
           </svg>
 
           {/* Золотые кружки */}
-          {steps.map((step) => (
+          {steps.map((step) => {
+            const isLast = step.id === 20;
+            const sz = isLast ? 58 : 46;
+            return (
             <button
               key={step.id}
               onClick={() => setActiveStep(step)}
@@ -129,48 +194,88 @@ export default function Index() {
                 top: `${step.y}%`,
                 transform: "translate(-50%, -50%)",
                 zIndex: 10,
+                border: "none",
+                background: "none",
+                padding: 0,
+                cursor: "pointer",
               }}
             >
-              {/* Тень */}
+              {/* Внешнее кольцо — тёмно-коричневое */}
               <div
-                className="absolute rounded-full transition-all duration-300"
+                className="relative flex items-center justify-center rounded-full transition-all duration-200 group-hover:scale-110"
                 style={{
-                  width: step.id === 20 ? "60px" : "48px",
-                  height: step.id === 20 ? "60px" : "48px",
-                  background: "rgba(44,24,16,0.3)",
-                  top: "3px",
-                  left: "3px",
-                  borderRadius: "50%",
-                }}
-              />
-              {/* Основной круг */}
-              <div
-                className="relative flex flex-col items-center justify-center rounded-full border-2 border-gold-dark transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                style={{
-                  width: step.id === 20 ? "60px" : "48px",
-                  height: step.id === 20 ? "60px" : "48px",
-                  background: step.id === 20
-                    ? "radial-gradient(circle at 35% 35%, #f5e642, #d4a017 50%, #a07010)"
-                    : "radial-gradient(circle at 35% 35%, #f0c040, #d4a017 50%, #a07010)",
-                  boxShadow: step.id === 20
-                    ? "0 0 20px rgba(212,160,23,0.8), 0 0 40px rgba(212,160,23,0.4), inset 0 1px 3px rgba(255,255,255,0.4)"
-                    : "0 0 8px rgba(212,160,23,0.5), inset 0 1px 3px rgba(255,255,255,0.3)",
-                  borderColor: "#a07010",
+                  width: sz + 8,
+                  height: sz + 8,
+                  background: "radial-gradient(circle at 40% 30%, #b8860b, #8B6914 40%, #5a3e08 75%, #3a2505)",
+                  boxShadow: isLast
+                    ? "0 4px 16px rgba(0,0,0,0.55), 0 0 24px rgba(220,170,0,0.6)"
+                    : "0 4px 12px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.3)",
+                  border: "none",
                 }}
               >
-                <span style={{ fontSize: step.id === 20 ? "22px" : "18px", lineHeight: 1 }}>{step.emoji}</span>
-              </div>
-              {/* Номер и подпись */}
-              <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-center whitespace-nowrap">
+              {/* Основной золотой круг */}
+              <div
+                className="relative flex flex-col items-center justify-center rounded-full"
+                style={{
+                  width: sz,
+                  height: sz,
+                  background: isLast
+                    ? "radial-gradient(circle at 38% 28%, #fffaaa 0%, #f5d020 25%, #e0a800 55%, #b07800 80%, #7a5000 100%)"
+                    : "radial-gradient(circle at 38% 28%, #fff5a0 0%, #f0c030 28%, #d4a017 58%, #a07010 82%, #6e4d08 100%)",
+                  boxShadow: isLast
+                    ? "inset 0 3px 8px rgba(255,245,100,0.7), inset 0 -3px 8px rgba(80,40,0,0.5)"
+                    : "inset 0 3px 6px rgba(255,240,80,0.6), inset 0 -3px 6px rgba(70,35,0,0.45)",
+                }}
+              >
+                {/* Блик — имитирует выпуклость */}
+                <div className="absolute rounded-full pointer-events-none" style={{
+                  width: "45%", height: "28%",
+                  top: "14%", left: "20%",
+                  background: "rgba(255,255,200,0.6)",
+                  borderRadius: "50%",
+                  filter: "blur(2px)",
+                }} />
+                {/* Номер */}
                 <span
-                  className="text-xs font-bold text-ink bg-parchment/80 px-1 rounded"
-                  style={{ fontFamily: '"Cinzel", serif', fontSize: "10px" }}
+                  className="relative select-none"
+                  style={{
+                    fontFamily: '"Arial Black", Arial, sans-serif',
+                    fontSize: isLast ? "18px" : "14px",
+                    fontWeight: 900,
+                    color: "#3a1a00",
+                    textShadow: "0 1px 1px rgba(255,220,80,0.5), 0 -1px 1px rgba(60,30,0,0.3)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {step.id}
+                </span>
+              </div>
+              </div>
+              {/* Подпись появляется при наведении */}
+              <div
+                className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none whitespace-nowrap"
+                style={{ top: sz + 14, left: "50%", transform: "translateX(-50%)", zIndex: 20 }}
+              >
+                <span
+                  style={{
+                    fontFamily: '"Cinzel", serif',
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    color: "#2c1810",
+                    background: "rgba(248,235,170,0.96)",
+                    border: "1px solid #8B4513",
+                    borderRadius: "4px",
+                    padding: "2px 7px",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.35)",
+                    display: "block",
+                  }}
                 >
                   {step.id}. {step.title}
                 </span>
               </div>
             </button>
-          ))}
+            );
+          })}
 
           {/* Декоративные элементы карты */}
           <div className="absolute bottom-4 right-6 text-5xl opacity-30 pointer-events-none" style={{ transform: "rotate(15deg)" }}>⚓</div>
