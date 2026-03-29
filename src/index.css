@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes chestPulse {
+  0%,
+  100% {
+    transform: translate(52%, -58%) scale(1);
+  }
+  50% {
+    transform: translate(52%, -61%) scale(1.06);
+  }
+}
+
 @layer base {
   :root {
     --background: 38 60% 88%;

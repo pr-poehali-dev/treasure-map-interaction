@@ -249,6 +249,42 @@ export default function Index() {
             />
           </svg>
 
+          {/* Сундук с сокровищами после хода 20 */}
+          <div
+            className="absolute pointer-events-none select-none"
+            style={{
+              left: `${steps[19].x}%`,
+              top: `${steps[19].y}%`,
+              transform: "translate(52%, -58%)",
+              zIndex: 5,
+              width: "120px",
+              animation: "chestPulse 2.8s ease-in-out infinite",
+            }}
+          >
+            {/* Золотое свечение под сундуком */}
+            <div style={{
+              position: "absolute",
+              bottom: "-10px",
+              left: "5%",
+              width: "90%",
+              height: "22px",
+              background: "radial-gradient(ellipse, rgba(212,160,23,0.55) 0%, transparent 70%)",
+              borderRadius: "50%",
+              filter: "blur(5px)",
+            }} />
+            <img
+              src="https://cdn.poehali.dev/projects/9862dfab-9da8-4c0a-b140-aa0e186a3d1b/bucket/0f27bd53-fbd3-43ee-bdfc-b036a3240c7a.png"
+              alt="Сундук с сокровищами"
+              style={{
+                width: "120px",
+                height: "auto",
+                display: "block",
+                filter: "drop-shadow(0px 6px 14px rgba(44,24,16,0.6)) drop-shadow(0px 0px 18px rgba(212,160,23,0.5))",
+                mixBlendMode: "multiply",
+              }}
+            />
+          </div>
+
           {/* Золотые кружки */}
           {steps.map((step) => {
             const isLast = step.id === 20;
