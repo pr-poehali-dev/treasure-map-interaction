@@ -249,40 +249,6 @@ export default function Index() {
             />
           </svg>
 
-          {/* Пиратский корабль у хода 1 */}
-          <div
-            className="absolute pointer-events-none select-none"
-            style={{
-              left: `${steps[0].x}%`,
-              top: `${steps[0].y}%`,
-              transform: "translate(-160%, -55%)",
-              zIndex: 5,
-              fontSize: "86px",
-              lineHeight: 1,
-              filter: "drop-shadow(3px 4px 6px rgba(44,24,16,0.5))",
-              animation: "shipRock 4s ease-in-out infinite",
-            }}
-          >
-            ⛵
-          </div>
-
-          {/* Сундук с сокровищами у хода 20 */}
-          <div
-            className="absolute pointer-events-none select-none"
-            style={{
-              left: `${steps[19].x}%`,
-              top: `${steps[19].y}%`,
-              transform: "translate(60%, -60%)",
-              zIndex: 5,
-              fontSize: "82px",
-              lineHeight: 1,
-              filter: "drop-shadow(3px 4px 8px rgba(44,24,16,0.55))",
-              animation: "chestGlow 2.5s ease-in-out infinite",
-            }}
-          >
-            🧳
-          </div>
-
           {/* Золотые кружки */}
           {steps.map((step) => {
             const isLast = step.id === 20;
