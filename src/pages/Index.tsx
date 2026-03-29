@@ -9,27 +9,28 @@ interface Step {
   y: number;
 }
 
+// Координаты кружков точно по картинке (% от ширины и высоты)
 const steps: Step[] = [
-  { id: 1,  title: "Начало пути",        description: "Ты просыпаешься на берегу неизвестного острова. Солёный ветер треплет твои волосы, а в руках — старая карта с загадочными пометками. Великое приключение начинается!", emoji: "🏖️", x: 8, y: 75 },
-  { id: 2,  title: "Таверна «Мёртвый якорь»", description: "Скрипучая дверь таверны открывается. Одноглазый хозяин кивает и шёпотом говорит: «Тебя ждут в дальнем углу». За столом сидит старый пират с ещё одним куском карты!", emoji: "🍺", x: 18, y: 58 },
-  { id: 3,  title: "Загадка маяка",       description: "На вершине маяка найдена шкатулка с шифром. Три символа — череп, якорь, компас. Ты вводишь правильный порядок и слышишь щелчок замка. Внутри — ключ.", emoji: "🗼", x: 28, y: 40 },
-  { id: 4,  title: "Коралловый риф",      description: "Под водой мерцают тысячи рыб. Среди кораллов ты замечаешь бронзовую таблицу с координатами. Но рядом кружит акула...", emoji: "🐠", x: 38, y: 55 },
-  { id: 5,  title: "Заброшенный корабль", description: "«Морская ведьма» — так написано на борту разбитого галеона. В трюме сохранился корабельный журнал. Последняя запись: «Сокровище спрятано там, где восходит двойное солнце».", emoji: "⚓", x: 48, y: 35 },
-  { id: 6,  title: "Пещера летучих мышей", description: "Тысячи крыльев взлетают в темноте. Факел освещает наскальные рисунки — карту подземных тоннелей. Один путь ведёт к свету, остальные — в никуда.", emoji: "🦇", x: 58, y: 50 },
-  { id: 7,  title: "Деревня туземцев",    description: "Вождь племени встречает тебя у костра. Испытание трёх загадок — только ответив верно, ты получишь разрешение пройти через священные земли.", emoji: "🌴", x: 68, y: 68 },
-  { id: 8,  title: "Гора Дракона",        description: "Склон горы усеян костями прежних искателей приключений. На вершине — огромный камень в форме дракона. Под его левой лапой скрыт вход в пещеру.", emoji: "🐉", x: 78, y: 48 },
-  { id: 9,  title: "Подземное озеро",     description: "Кристально чистое озеро светится голубым светом. На острове посреди воды стоит сундук. Но мост разрушен — нужно найти лодку или другой путь.", emoji: "💧", x: 85, y: 30 },
-  { id: 10, title: "Храм Нептуна",        description: "Величественные колонны уходят в небо. На алтаре лежит золотой трезубец. Надпись гласит: «Только достойный может взять это оружие».", emoji: "🔱", x: 72, y: 18 },
-  { id: 11, title: "Башня с часами",      description: "Старинные часы остановились ровно в полночь. Чтобы открыть потайную дверь, нужно перевести стрелки на правильное время, указанное в корабельном журнале.", emoji: "🕰️", x: 58, y: 20 },
-  { id: 12, title: "Логово пиратов",      description: "Банда Железного Крюка преграждает путь. Капитан предлагает сделку: карту в обмен на половину сокровища. Принять или попробовать перехитрить их?", emoji: "⚔️", x: 45, y: 15 },
-  { id: 13, title: "Секретная бухта",     description: "Спрятанная за скалами бухта — идеальное укрытие. Здесь стоит небольшой корабль с поднятыми парусами. На борту — верная команда, готовая плыть к финальному острову.", emoji: "🚢", x: 32, y: 22 },
-  { id: 14, title: "Шторм в открытом море", description: "Волны высотой с дом бьют в борт корабля. Молния освещает курс — прямо по курсу скалы! Только опытный штурман сможет провести судно через этот ад.", emoji: "⛈️", x: 20, y: 35 },
-  { id: 15, title: "Остров Призраков",    description: "Туман скрывает берега проклятого острова. Призраки бывших пиратов шепчут подсказки и угрозы. Лишь тот, кто не поддастся страху, найдёт финальный знак.", emoji: "👻", x: 15, y: 52 },
-  { id: 16, title: "Подводный город",     description: "Легендарный Атлантис существует! В руинах древнего города хранится последний фрагмент карты. Осьминог-страж требует решить его загадку.", emoji: "🏛️", x: 25, y: 68 },
-  { id: 17, title: "Вулканический остров", description: "Земля дрожит под ногами. Лава течёт по склонам. В самом центре кратера, на каменном пьедестале — золотой компас, указывающий прямо к сокровищу!", emoji: "🌋", x: 38, y: 78 },
-  { id: 18, title: "Тёмный лес",          description: "Деревья настолько высоки, что скрывают солнце. В чаще живёт мудрая черепаха, которая помнит всё. Она согласна рассказать последнюю тайну в обмен на рассказ о твоих приключениях.", emoji: "🐢", x: 52, y: 82 },
-  { id: 19, title: "Золотые ворота",      description: "Огромные ворота из чистого золота преграждают путь. Семь замков — семь испытаний пройдено. Каждый ключ из прошлых приключений открывает один замок.", emoji: "🗝️", x: 65, y: 75 },
-  { id: 20, title: "Сокровищница!",       description: "ТЫ НАШЁЛ ЕГО! Огромный зал заполнен золотыми монетами, драгоценными камнями и артефактами тысяч цивилизаций. В центре — сундук с главным сокровищем: картой к ещё большему приключению... 🏴‍☠️", emoji: "💰", x: 78, y: 82 },
+  { id: 1,  title: "Начало пути",             description: "Ты просыпаешься на берегу неизвестного острова. Солёный ветер треплет твои волосы, а в руках — старая карта с загадочными пометками. Великое приключение начинается!", emoji: "🏖️", x: 88, y: 82 },
+  { id: 2,  title: "Таверна «Мёртвый якорь»", description: "Скрипучая дверь таверны открывается. Одноглазый хозяин кивает и шёпотом говорит: «Тебя ждут в дальнем углу». За столом сидит старый пират с ещё одним куском карты!", emoji: "🍺", x: 76, y: 74 },
+  { id: 3,  title: "Загадка якоря",            description: "На берегу лежит ржавый якорь — под ним спрятан медальон с гравировкой. Три знака открывают следующий путь на карте.", emoji: "⚓", x: 65, y: 82 },
+  { id: 4,  title: "Коралловый риф",           description: "Под водой мерцают тысячи рыб. Среди кораллов ты замечаешь бронзовую таблицу с координатами. Но рядом кружит акула...", emoji: "🐠", x: 56, y: 72 },
+  { id: 5,  title: "Медуза-страж",             description: "Огромная светящаяся медуза преграждает путь. Она задаёт три загадки о море. Ответь верно — и она укажет дальнейший курс.", emoji: "🪼", x: 79, y: 58 },
+  { id: 6,  title: "Штурвал судьбы",           description: "На дне моря лежит огромный штурвал. Поверни его трижды по часовой стрелке — откроется тайный проход в подводную пещеру.", emoji: "☸️", x: 79, y: 42 },
+  { id: 7,  title: "Деревня туземцев",         description: "Вождь племени встречает тебя у костра. Испытание трёх загадок — только ответив верно, ты получишь разрешение пройти через священные земли.", emoji: "🌴", x: 79, y: 27 },
+  { id: 8,  title: "Гора Дракона",             description: "Склон горы усеян костями прежних искателей приключений. На вершине — огромный камень в форме дракона. Под его левой лапой скрыт вход в пещеру.", emoji: "🐉", x: 70, y: 18 },
+  { id: 9,  title: "Подземное озеро",          description: "Кристально чистое озеро светится голубым светом. На острове посреди воды стоит сундук. Но мост разрушен — нужно найти лодку или другой путь.", emoji: "💧", x: 60, y: 13 },
+  { id: 10, title: "Храм Нептуна",             description: "Величественные колонны уходят в небо. На алтаре лежит золотой трезубец. Надпись гласит: «Только достойный может взять это оружие».", emoji: "🔱", x: 49, y: 10 },
+  { id: 11, title: "Башня с часами",           description: "Старинные часы остановились ровно в полночь. Чтобы открыть потайную дверь, нужно перевести стрелки на правильное время, указанное в корабельном журнале.", emoji: "🕰️", x: 38, y: 13 },
+  { id: 12, title: "Логово пиратов",           description: "Банда Железного Крюка преграждает путь. Капитан предлагает сделку: карту в обмен на половину сокровища. Принять или попробовать перехитрить их?", emoji: "⚔️", x: 28, y: 18 },
+  { id: 13, title: "Секретная бухта",          description: "Спрятанная за скалами бухта — идеальное укрытие. Здесь стоит небольшой корабль с поднятыми парусами. На борту — верная команда, готовая плыть к финальному острову.", emoji: "🚢", x: 19, y: 27 },
+  { id: 14, title: "Шторм в открытом море",    description: "Волны высотой с дом бьют в борт корабля. Молния освещает курс — прямо по курсу скалы! Только опытный штурман сможет провести судно через этот ад.", emoji: "⛈️", x: 14, y: 40 },
+  { id: 15, title: "Остров Призраков",         description: "Туман скрывает берега проклятого острова. Призраки бывших пиратов шепчут подсказки и угрозы. Лишь тот, кто не поддастся страху, найдёт финальный знак.", emoji: "👻", x: 19, y: 52 },
+  { id: 16, title: "Пиратский корабль",        description: "Чёрный парус режет горизонт. «Летучий голландец» приближается! На его борту — карты всех морей мира. Капитан готов обменять нужную карту на редкий артефакт.", emoji: "🏴‍☠️", x: 19, y: 64 },
+  { id: 17, title: "Вулканический остров",     description: "Земля дрожит под ногами. Лава течёт по склонам. В самом центре кратера, на каменном пьедестале — золотой компас, указывающий прямо к сокровищу!", emoji: "🌋", x: 25, y: 74 },
+  { id: 18, title: "Маяк на краю света",       description: "Старый маяк мигает сквозь туман. Смотритель — столетний пират, который видел всё. Он передаёт последний ключ и благословляет в финальный путь.", emoji: "🗼", x: 14, y: 82 },
+  { id: 19, title: "Красный крест",            description: "На земле начерчен огромный красный крест — именно здесь зарыто сокровище! Но земля тверда, нужна лопата. А лопата охраняется последним стражем...", emoji: "❌", x: 8,  y: 67 },
+  { id: 20, title: "Сокровищница!",            description: "ТЫ НАШЁЛ ЕГО! Огромный сундук переполнен золотыми монетами, драгоценными камнями и артефактами тысяч цивилизаций. В центре лежит свиток — карта к ещё большему приключению... 🏴‍☠️", emoji: "💰", x: 8,  y: 18 },
 ];
 
 const pathPoints = steps.map(s => `${s.x},${s.y}`).join(" ");
@@ -38,202 +39,218 @@ export default function Index() {
   const [activeStep, setActiveStep] = useState<Step | null>(null);
 
   return (
-    <div className="min-h-screen bg-ink overflow-hidden relative" style={{ fontFamily: "Merriweather, serif" }}>
-      {/* Фоновая текстура пергамента */}
+    <div className="min-h-screen overflow-hidden relative bg-[#3a1a00]" style={{ fontFamily: "Merriweather, serif" }}>
+
+      {/* Полноэкранная карта-фон */}
       <div
-        className="min-h-screen relative"
-        style={{
-          background: "radial-gradient(ellipse at 20% 20%, #c9a96e 0%, #e8d4a0 30%, #f4e4c1 55%, #e8d4a0 75%, #c9a96e 100%)",
-        }}
+        className="relative w-full flex flex-col"
+        style={{ minHeight: "100vh" }}
       >
-        {/* Зернистая текстура */}
+        {/* Фоновое изображение карты */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E")`,
-            opacity: 0.6,
+            backgroundImage: `url("https://cdn.poehali.dev/projects/9862dfab-9da8-4c0a-b140-aa0e186a3d1b/bucket/03e094a1-ea26-4bcf-a610-6065ca2d954f.png")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         />
 
-        {/* Обожжённые края */}
-        <div className="absolute inset-0 pointer-events-none" style={{
-          boxShadow: "inset 0 0 80px 40px rgba(44,24,16,0.55), inset 0 0 200px 80px rgba(44,24,16,0.25)"
-        }} />
+        {/* Лёгкое затемнение для читаемости */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.08)" }} />
 
-        {/* Декоративные водяные пятна */}
-        <div className="absolute top-[15%] left-[60%] w-48 h-32 rounded-full pointer-events-none" style={{ background: "rgba(45,106,143,0.07)", transform: "rotate(-15deg)" }} />
-        <div className="absolute top-[55%] left-[10%] w-36 h-24 rounded-full pointer-events-none" style={{ background: "rgba(45,106,143,0.06)", transform: "rotate(10deg)" }} />
-        <div className="absolute top-[70%] left-[70%] w-56 h-20 rounded-full pointer-events-none" style={{ background: "rgba(45,106,143,0.05)", transform: "rotate(-5deg)" }} />
-
-        {/* Заголовок */}
-        <div className="relative z-10 text-center pt-8 pb-4 px-4">
-          <div className="inline-block border-4 border-ink px-8 py-4 relative" style={{
-            borderImage: "none",
-            boxShadow: "4px 4px 0 rgba(44,24,16,0.4), inset 0 0 20px rgba(44,24,16,0.1)"
-          }}>
-            <div className="absolute -top-3 -left-3 text-2xl">🏴‍☠️</div>
-            <div className="absolute -top-3 -right-3 text-2xl">🏴‍☠️</div>
+        {/* Заголовок поверх карты */}
+        <div className="relative z-10 text-center pt-6 pb-2 px-4">
+          <div
+            className="inline-block px-6 py-3 relative"
+            style={{
+              background: "rgba(244,228,193,0.85)",
+              border: "3px solid #8B4513",
+              boxShadow: "4px 4px 0 rgba(44,24,16,0.5), inset 0 0 20px rgba(44,24,16,0.1)",
+              backdropFilter: "blur(2px)",
+            }}
+          >
+            <div className="absolute -top-3 -left-3 text-xl">🏴‍☠️</div>
+            <div className="absolute -top-3 -right-3 text-xl">🏴‍☠️</div>
             <h1
-              className="text-5xl md:text-7xl text-ink leading-none tracking-wide"
-              style={{ fontFamily: '"Pirata One", cursive', textShadow: "3px 3px 6px rgba(44,24,16,0.3)" }}
+              className="text-4xl md:text-6xl text-ink leading-none tracking-wide"
+              style={{ fontFamily: '"Pirata One", cursive', textShadow: "2px 2px 4px rgba(44,24,16,0.3)", color: "#2c1810" }}
             >
               Карта Сокровищ
             </h1>
-            <p className="text-ink-light text-sm md:text-base mt-2 italic" style={{ fontFamily: "Merriweather, serif" }}>
+            <p className="text-sm md:text-base mt-1 italic" style={{ color: "#5c3d2e", fontFamily: "Merriweather, serif" }}>
               20 ходов до заветного сокровища — кликни на золотой круг!
             </p>
           </div>
         </div>
 
-        {/* Карта с кругами */}
-        <div className="relative w-full" style={{ height: "calc(100vh - 180px)", minHeight: "520px" }}>
-          {/* SVG путь */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {/* Область карты с кружками */}
+        <div className="relative flex-1" style={{ height: "calc(100vh - 130px)", minHeight: "480px" }}>
+
+          {/* SVG пунктирный путь поверх карты */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
             <defs>
               <filter id="roughen">
-                <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.5" />
+                <feTurbulence type="turbulence" baseFrequency="0.03" numOctaves="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.3" />
               </filter>
             </defs>
-            {/* Тень пути */}
             <polyline
               points={pathPoints}
               fill="none"
-              stroke="rgba(44,24,16,0.2)"
-              strokeWidth="0.8"
-              strokeDasharray="2,1.5"
+              stroke="rgba(44,24,16,0.35)"
+              strokeWidth="0.7"
+              strokeDasharray="2,1.8"
               strokeLinecap="round"
               filter="url(#roughen)"
-              transform="translate(0.15,0.15)"
+              transform="translate(0.1,0.1)"
             />
-            {/* Основной пунктирный путь */}
             <polyline
               points={pathPoints}
               fill="none"
-              stroke="#8B4513"
-              strokeWidth="0.5"
-              strokeDasharray="2,1.5"
+              stroke="#5c2a00"
+              strokeWidth="0.45"
+              strokeDasharray="2,1.8"
               strokeLinecap="round"
               filter="url(#roughen)"
             />
           </svg>
 
           {/* Золотые кружки */}
-          {steps.map((step) => (
-            <button
-              key={step.id}
-              onClick={() => setActiveStep(step)}
-              className="absolute group"
-              style={{
-                left: `${step.x}%`,
-                top: `${step.y}%`,
-                transform: "translate(-50%, -50%)",
-                zIndex: 10,
-              }}
-            >
-              {/* Тень */}
-              <div
-                className="absolute rounded-full transition-all duration-300"
+          {steps.map((step) => {
+            const isLast = step.id === 20;
+            const size = isLast ? 52 : 42;
+            return (
+              <button
+                key={step.id}
+                onClick={() => setActiveStep(step)}
+                className="absolute group"
                 style={{
-                  width: step.id === 20 ? "60px" : "48px",
-                  height: step.id === 20 ? "60px" : "48px",
-                  background: "rgba(44,24,16,0.3)",
-                  top: "3px",
-                  left: "3px",
-                  borderRadius: "50%",
-                }}
-              />
-              {/* Основной круг */}
-              <div
-                className="relative flex flex-col items-center justify-center rounded-full border-2 border-gold-dark transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                style={{
-                  width: step.id === 20 ? "60px" : "48px",
-                  height: step.id === 20 ? "60px" : "48px",
-                  background: step.id === 20
-                    ? "radial-gradient(circle at 35% 35%, #f5e642, #d4a017 50%, #a07010)"
-                    : "radial-gradient(circle at 35% 35%, #f0c040, #d4a017 50%, #a07010)",
-                  boxShadow: step.id === 20
-                    ? "0 0 20px rgba(212,160,23,0.8), 0 0 40px rgba(212,160,23,0.4), inset 0 1px 3px rgba(255,255,255,0.4)"
-                    : "0 0 8px rgba(212,160,23,0.5), inset 0 1px 3px rgba(255,255,255,0.3)",
-                  borderColor: "#a07010",
+                  left: `${step.x}%`,
+                  top: `${step.y}%`,
+                  transform: "translate(-50%, -50%)",
+                  zIndex: 10,
                 }}
               >
-                <span style={{ fontSize: step.id === 20 ? "22px" : "18px", lineHeight: 1 }}>{step.emoji}</span>
-              </div>
-              {/* Номер и подпись */}
-              <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-center whitespace-nowrap">
-                <span
-                  className="text-xs font-bold text-ink bg-parchment/80 px-1 rounded"
-                  style={{ fontFamily: '"Cinzel", serif', fontSize: "10px" }}
+                {/* Тень */}
+                <div
+                  className="absolute rounded-full"
+                  style={{
+                    width: size,
+                    height: size,
+                    background: "rgba(44,24,16,0.4)",
+                    top: "3px",
+                    left: "3px",
+                    borderRadius: "50%",
+                  }}
+                />
+                {/* Круг */}
+                <div
+                  className="relative flex items-center justify-center rounded-full transition-all duration-200 group-hover:scale-115"
+                  style={{
+                    width: size,
+                    height: size,
+                    background: isLast
+                      ? "radial-gradient(circle at 32% 32%, #fff8a0, #f5d020 35%, #d4a017 65%, #8B6000)"
+                      : "radial-gradient(circle at 32% 32%, #fff0a0, #f0c030 40%, #d4a017 65%, #a07010)",
+                    boxShadow: isLast
+                      ? "0 0 18px rgba(212,160,23,0.9), 0 0 36px rgba(212,160,23,0.5), inset 0 1px 4px rgba(255,255,255,0.5)"
+                      : "0 0 8px rgba(212,160,23,0.6), 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.4)",
+                    border: isLast ? "2.5px solid #8B6000" : "2px solid #a07010",
+                  }}
                 >
-                  {step.id}. {step.title}
-                </span>
-              </div>
-            </button>
-          ))}
-
-          {/* Декоративные элементы карты */}
-          <div className="absolute bottom-4 right-6 text-5xl opacity-30 pointer-events-none" style={{ transform: "rotate(15deg)" }}>⚓</div>
-          <div className="absolute top-4 left-6 text-4xl opacity-25 pointer-events-none" style={{ transform: "rotate(-10deg)" }}>🧭</div>
-          <div className="absolute bottom-16 left-8 text-3xl opacity-20 pointer-events-none" style={{ transform: "rotate(5deg)" }}>🐋</div>
-          <div className="absolute top-8 right-12 text-3xl opacity-20 pointer-events-none">🦜</div>
-
-          {/* Роза ветров */}
-          <div className="absolute bottom-8 right-16 opacity-15 pointer-events-none text-6xl" style={{ transform: "rotate(0deg)" }}>
-            🧭
-          </div>
-
-          {/* Подпись автора */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-center pointer-events-none">
-            <span className="text-xs text-ink-light italic opacity-50" style={{ fontFamily: "Merriweather, serif" }}>
-              ~ Карта составлена в лето 2026-е ~
-            </span>
-          </div>
+                  <span
+                    className="font-bold select-none"
+                    style={{
+                      fontFamily: '"Cinzel", serif',
+                      fontSize: isLast ? "15px" : "13px",
+                      color: "#2c1810",
+                      textShadow: "0 1px 2px rgba(255,255,255,0.4)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {step.id}
+                  </span>
+                </div>
+                {/* Подпись под кружком */}
+                <div
+                  className="absolute whitespace-nowrap"
+                  style={{
+                    top: `${size + 4}px`,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  <span
+                    className="text-center block"
+                    style={{
+                      fontFamily: '"Cinzel", serif',
+                      fontSize: "9px",
+                      color: "#2c1810",
+                      background: "rgba(244,228,193,0.82)",
+                      padding: "1px 4px",
+                      borderRadius: "3px",
+                      fontWeight: 700,
+                      maxWidth: "70px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      display: "block",
+                    }}
+                  >
+                    {step.title}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Модальное окно хода */}
+      {/* Модальное окно */}
       {activeStep && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "rgba(44,24,16,0.75)" }}
+          style={{ background: "rgba(44,24,16,0.78)" }}
           onClick={() => setActiveStep(null)}
         >
           <div
-            className="relative max-w-md w-full rounded-lg p-8 animate-fade-in"
+            className="relative max-w-md w-full rounded-lg p-7 animate-fade-in"
             style={{
               background: "radial-gradient(ellipse at 30% 20%, #f4e4c1, #e8d4a0 60%, #d4b882)",
-              boxShadow: "0 0 60px rgba(44,24,16,0.6), 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(44,24,16,0.1)",
+              boxShadow: "0 0 60px rgba(44,24,16,0.7), 0 20px 40px rgba(0,0,0,0.5), inset 0 0 30px rgba(44,24,16,0.1)",
               border: "3px solid #8B4513",
             }}
             onClick={e => e.stopPropagation()}
           >
-            {/* Обожжённые края модалки */}
-            <div className="absolute inset-0 rounded-lg pointer-events-none" style={{
-              boxShadow: "inset 0 0 30px rgba(44,24,16,0.3)"
-            }} />
+            <div className="absolute inset-0 rounded-lg pointer-events-none" style={{ boxShadow: "inset 0 0 30px rgba(44,24,16,0.25)" }} />
 
             {/* Закрыть */}
             <button
               onClick={() => setActiveStep(null)}
-              className="absolute top-3 right-4 text-ink-light hover:text-ink text-2xl font-bold transition-colors"
-              style={{ fontFamily: '"Pirata One", cursive' }}
+              className="absolute top-3 right-4 text-2xl font-bold transition-opacity hover:opacity-60"
+              style={{ color: "#2c1810" }}
             >
               ✕
             </button>
 
             {/* Шапка */}
             <div className="text-center mb-4">
-              <div className="text-6xl mb-2">{activeStep.emoji}</div>
+              <div className="text-5xl mb-2">{activeStep.emoji}</div>
               <div
-                className="text-xs font-bold uppercase tracking-widest text-gold-dark mb-1"
-                style={{ fontFamily: '"Cinzel", serif' }}
+                className="text-xs font-bold uppercase tracking-widest mb-1"
+                style={{ fontFamily: '"Cinzel", serif', color: "#a07010" }}
               >
                 Ход {activeStep.id} из 20
               </div>
               <h2
-                className="text-2xl md:text-3xl text-ink leading-tight"
-                style={{ fontFamily: '"Pirata One", cursive', textShadow: "1px 1px 3px rgba(44,24,16,0.2)" }}
+                className="text-2xl md:text-3xl leading-tight"
+                style={{ fontFamily: '"Pirata One", cursive', color: "#2c1810", textShadow: "1px 1px 3px rgba(44,24,16,0.15)" }}
               >
                 {activeStep.title}
               </h2>
@@ -241,13 +258,16 @@ export default function Index() {
 
             {/* Разделитель */}
             <div className="flex items-center gap-3 my-4">
-              <div className="flex-1 h-px bg-ink/20" />
-              <span className="text-ink/40 text-lg">⚓</span>
-              <div className="flex-1 h-px bg-ink/20" />
+              <div className="flex-1 h-px" style={{ background: "rgba(44,24,16,0.2)" }} />
+              <span style={{ color: "rgba(44,24,16,0.35)", fontSize: "18px" }}>⚓</span>
+              <div className="flex-1 h-px" style={{ background: "rgba(44,24,16,0.2)" }} />
             </div>
 
             {/* Описание */}
-            <p className="text-ink text-sm md:text-base leading-relaxed text-center italic" style={{ fontFamily: "Merriweather, serif" }}>
+            <p
+              className="text-sm md:text-base leading-relaxed text-center italic"
+              style={{ fontFamily: "Merriweather, serif", color: "#2c1810" }}
+            >
               {activeStep.description}
             </p>
 
@@ -256,9 +276,10 @@ export default function Index() {
               {activeStep.id > 1 && (
                 <button
                   onClick={() => setActiveStep(steps[activeStep.id - 2])}
-                  className="flex-1 py-2 px-4 rounded text-sm font-bold text-ink transition-all hover:scale-105"
+                  className="flex-1 py-2 px-4 rounded text-sm font-bold transition-all hover:scale-105"
                   style={{
                     fontFamily: '"Cinzel", serif',
+                    color: "#2c1810",
                     background: "radial-gradient(circle at 35% 35%, #f0c040, #d4a017 50%, #a07010)",
                     border: "2px solid #8B4513",
                     boxShadow: "2px 2px 6px rgba(44,24,16,0.3)",
@@ -270,9 +291,10 @@ export default function Index() {
               {activeStep.id < 20 && (
                 <button
                   onClick={() => setActiveStep(steps[activeStep.id])}
-                  className="flex-1 py-2 px-4 rounded text-sm font-bold text-ink transition-all hover:scale-105"
+                  className="flex-1 py-2 px-4 rounded text-sm font-bold transition-all hover:scale-105"
                   style={{
                     fontFamily: '"Cinzel", serif',
+                    color: "#2c1810",
                     background: "radial-gradient(circle at 35% 35%, #f0c040, #d4a017 50%, #a07010)",
                     border: "2px solid #8B4513",
                     boxShadow: "2px 2px 6px rgba(44,24,16,0.3)",
@@ -284,12 +306,13 @@ export default function Index() {
               {activeStep.id === 20 && (
                 <button
                   onClick={() => setActiveStep(steps[0])}
-                  className="flex-1 py-2 px-4 rounded text-sm font-bold text-ink transition-all hover:scale-105"
+                  className="flex-1 py-2 px-4 rounded text-sm font-bold transition-all hover:scale-105"
                   style={{
                     fontFamily: '"Cinzel", serif',
-                    background: "radial-gradient(circle at 35% 35%, #f5e642, #d4a017 50%, #a07010)",
+                    color: "#2c1810",
+                    background: "radial-gradient(circle at 35% 35%, #fff8a0, #f5d020 40%, #d4a017 70%, #8B6000)",
                     border: "2px solid #8B4513",
-                    boxShadow: "0 0 15px rgba(212,160,23,0.6), 2px 2px 6px rgba(44,24,16,0.3)",
+                    boxShadow: "0 0 15px rgba(212,160,23,0.7), 2px 2px 6px rgba(44,24,16,0.3)",
                   }}
                 >
                   🏴‍☠️ Начать снова!
