@@ -19,22 +19,7 @@ export default {
 			}
 		},
 		extend: {
-			fontFamily: {
-				pirata: ['"Pirata One"', 'cursive'],
-				merriweather: ['Merriweather', 'serif'],
-				cinzel: ['Cinzel', 'serif'],
-			},
 			colors: {
-				parchment: '#f4e4c1',
-				'parchment-dark': '#e8d4a0',
-				'parchment-deep': '#c9a96e',
-				'ink': '#2c1810',
-				'ink-light': '#5c3d2e',
-				'gold': '#d4a017',
-				'gold-light': '#f0c040',
-				'gold-dark': '#a07010',
-				'sea': '#2d6a8f',
-				'sea-dark': '#1a4060',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

@@ -4,16 +4,8 @@
 
 @layer base {
   :root {
-    --background: 38 60% 88%;
-    --foreground: 15 45% 15%;
-
-    --parchment: #f4e4c1;
-    --parchment-dark: #e8d4a0;
-    --ink: #2c1810;
-    --ink-light: #5c3d2e;
-    --gold: #d4a017;
-    --gold-light: #f0c040;
-    --gold-dark: #a07010;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
