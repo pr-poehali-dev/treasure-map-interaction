@@ -249,56 +249,6 @@ export default function Index() {
             />
           </svg>
 
-          {/* Сундук с сокровищами после хода 20 */}
-          <div
-            className="absolute pointer-events-none select-none"
-            style={{
-              left: `${steps[19].x}%`,
-              top: `${steps[19].y}%`,
-              transform: "translate(52%, -58%)",
-              zIndex: 5,
-              width: "120px",
-              animation: "chestPulse 2.8s ease-in-out infinite",
-            }}
-          >
-            {/* Золотое свечение под сундуком */}
-            <div style={{
-              position: "absolute",
-              bottom: "-10px",
-              left: "5%",
-              width: "90%",
-              height: "22px",
-              background: "radial-gradient(ellipse, rgba(212,160,23,0.55) 0%, transparent 70%)",
-              borderRadius: "50%",
-              filter: "blur(5px)",
-            }} />
-            <svg width="120" height="120" viewBox="0 0 120 120" style={{ display: "block", overflow: "visible" }}>
-              <defs>
-                <filter id="removeWhite" x="0%" y="0%" width="100%" height="100%">
-                  <feColorMatrix type="matrix"
-                    values="1 0 0 0 0
-                            0 1 0 0 0
-                            0 0 1 0 0
-                            -3 -3 -3 4 -0.5"
-                  />
-                  <feComposite in2="SourceGraphic" operator="in" />
-                </filter>
-                <filter id="chestShadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="rgba(44,24,16,0.6)" />
-                  <feDropShadow dx="0" dy="0" stdDeviation="8" floodColor="rgba(212,160,23,0.4)" />
-                </filter>
-              </defs>
-              <image
-                href="https://cdn.poehali.dev/projects/9862dfab-9da8-4c0a-b140-aa0e186a3d1b/bucket/0f27bd53-fbd3-43ee-bdfc-b036a3240c7a.png"
-                width="120"
-                height="120"
-                preserveAspectRatio="xMidYMid meet"
-                filter="url(#removeWhite)"
-                style={{ filter: "url(#removeWhite) url(#chestShadow)" }}
-              />
-            </svg>
-          </div>
-
           {/* Золотые кружки */}
           {steps.map((step) => {
             const isLast = step.id === 20;
