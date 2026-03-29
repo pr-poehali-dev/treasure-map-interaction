@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes pirateBob {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-4px) rotate(1.5deg);
+  }
+  70% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+}
+
 @keyframes chestBob {
   0%,
   100% {

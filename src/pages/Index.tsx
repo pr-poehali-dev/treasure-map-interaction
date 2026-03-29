@@ -249,6 +249,52 @@ export default function Index() {
             />
           </svg>
 
+          {/* Пират перед ходом 1 */}
+          <div
+            className="absolute pointer-events-none select-none"
+            style={{
+              left: `${steps[0].x}%`,
+              top: `${steps[0].y}%`,
+              transform: "translate(-115%, -55%)",
+              zIndex: 5,
+              width: "120px",
+            }}
+          >
+            <svg
+              width="120" height="150"
+              viewBox="0 0 120 150"
+              style={{ display: "block", overflow: "visible", animation: "pirateBob 4s ease-in-out infinite" }}
+            >
+              <defs>
+                <filter id="noWhitePirate">
+                  <feColorMatrix type="matrix"
+                    values="1 0 0 0 0
+                            0 1 0 0 0
+                            0 0 1 0 0
+                            -3 -3 -3 5 -0.8" />
+                  <feComposite in2="SourceGraphic" operator="in" />
+                </filter>
+                <filter id="pirateDrop" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="2" dy="6" stdDeviation="5" floodColor="rgba(44,24,16,0.5)" />
+                </filter>
+              </defs>
+              <image
+                href="https://cdn.poehali.dev/projects/9862dfab-9da8-4c0a-b140-aa0e186a3d1b/files/df5e2ebe-bbde-4a70-b99d-2132f3d60750.jpg"
+                width="120" height="150"
+                preserveAspectRatio="xMidYMid meet"
+                style={{ filter: "url(#noWhitePirate) url(#pirateDrop)" }}
+              />
+            </svg>
+            {/* Тень под пиратом */}
+            <div style={{
+              position: "absolute",
+              bottom: "-8px", left: "15%",
+              width: "70%", height: "14px",
+              background: "radial-gradient(ellipse, rgba(44,24,16,0.35) 0%, transparent 70%)",
+              filter: "blur(4px)",
+            }} />
+          </div>
+
           {/* Сундук после хода 20 */}
           <div
             className="absolute pointer-events-none select-none"
