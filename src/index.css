@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes shipRock {
+  0%,
+  100% {
+    transform: translate(-160%, -55%) rotate(-4deg);
+  }
+  50% {
+    transform: translate(-160%, -58%) rotate(4deg);
+  }
+}
+
+@keyframes chestGlow {
+  0%,
+  100% {
+    transform: translate(60%, -60%) scale(1);
+    filter: drop-shadow(3px 4px 8px rgba(44, 24, 16, 0.55))
+      drop-shadow(0 0 8px rgba(212, 160, 23, 0.4));
+  }
+  50% {
+    transform: translate(60%, -63%) scale(1.06);
+    filter: drop-shadow(3px 4px 12px rgba(44, 24, 16, 0.6))
+      drop-shadow(0 0 20px rgba(212, 160, 23, 0.8));
+  }
+}
+
 @layer base {
   :root {
     --background: 38 60% 88%;
